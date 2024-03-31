@@ -1,8 +1,8 @@
 import random
 
-textfile = open("/Users/aaditya/Desktop/Coding/python/wordle/possibleAnswers.txt", "r")
+textfile = open("possibleAnswers.txt", "r")
 answers = textfile.readline().split()
-guessFile = open("/Users/aaditya/Desktop/Coding/python/wordle/guessables.txt", "r")
+guessFile = open("guessables.txt", "r")
 guessables = guessFile.readline().split()
 
 count = {'c': 446, 'i': 646, 'g': 299, 'a': 906, 'r': 835, 'e': 1053, 'b': 266, 'u': 456, 't': 667, 's': 617, 'y': 416, 'h': 377, 'm': 298, 'p': 345, 'w': 193, 'k': 202, 'l': 645, 'f': 206, 'o': 672, 'v': 148, 'd': 370, 'n': 548, 'q': 29, 'j': 27, 'x': 37, 'z': 35}
