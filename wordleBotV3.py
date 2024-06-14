@@ -86,7 +86,8 @@ def optimalGuess(possibilities):
     guessables.remove(final_guess)    #because we will be guessing it and it will have to be removed(unless of course it's the answer in which case it doesn't matter because the programm will exit)
     return final_guess
 
-guess = input("What would you like your first guess to be? ").lower()
+guess = input("What would you like your first guess to be? ").lower() #<-- best guess is either SALET which doesn't work for 'stale', 'steal', 'dowry', 'rowdy', 'slate', 'wordy' but has a 3.6491532783326095 average
+#other option is STARE which works for all but has a 3.6691208315288004 average
 for guess_num in range(6):
     print(guess.upper())
     feedback = input(": ").lower()
