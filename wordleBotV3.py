@@ -15,7 +15,7 @@ def remove(guess, feedback):
     global count
     import copy
 
-    def hasBlack(word, black):
+    def hasBlack(word, black):    #checking if word has a grey letter
         for letter in black:
             if letter in word:
                 return True
