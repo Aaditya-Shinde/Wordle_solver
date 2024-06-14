@@ -2,39 +2,38 @@ textfile = open("possibleAnswers.txt", "r")
 words = textfile.readline().split()
 textfile.close()
 
-def hasBlack(word, black):#checking if word has a grey letter
-    for letter in black:
-        if letter in word:
-            return True
-    return False
-
-def notAllRequired(green, yellow, word):    #checking if word doesn't have all yellow and green letters
-    for i in green:
-        if not i in word:
-            return True
-    for j in yellow:
-        if not j in word:
-            return True
-    return False
-
-def yellowWrongPlace(yellow, word):    #checking if the yellow letters are in the wrong place
-    for idx in range(5):
-        letter = word[idx]
-        if letter in yellow and idx in yellow[letter]:
-            return True
-    return False
-
-def greenWrongPlace(green, word):    #checking if the green letters are in the wrong place
-    for idx in range(5):
-        letter = word[idx]
-        if letter in green and idx != green[letter]:
-            return True
-    return False
-
-def remove(guess, feedback):    #shortens the possible answers through feedback
+def remove(guess, feedback):
     global words
     import copy
 
+    def hasBlack(word, black):    #checking if word has a grey letter
+        for letter in black:
+            if letter in word:
+                return True
+        return False
+
+    def notAllRequired(green, yellow, word):    #checking if word doesn't have all yellow and green letters
+        for i in green:
+            if not i in word:
+                return True
+        for j in yellow:
+            if not j in word:
+                return True
+        return False
+
+    def yellowWrongPlace(yellow, word):    #checking if the yellow letters are in the wrong place
+        for idx in range(5):
+            letter = word[idx]
+            if letter in yellow and idx in yellow[letter]:
+                return True
+        return False
+
+    def greenNotInRightPlace(green, word):    #checking if the green letters are in the wrong place
+        for required in green:
+            if word[green[required]] != required:
+                return True
+        return False
+    
     temp_words = copy.copy(words)
     black = set()
     yellow = {}
@@ -51,7 +50,7 @@ def remove(guess, feedback):    #shortens the possible answers through feedback
             green.update({guess[idx]:idx})
     
     for word in temp_words:
-        if hasBlack(word, black) or notAllRequired(green, yellow, word) or yellowWrongPlace(yellow, word) or greenWrongPlace(green, word):
+        if hasBlack(word, black) or notAllRequired(green, yellow, word) or yellowWrongPlace(yellow, word) or greenNotInRightPlace(green, word):
             words.remove(word)
 
 letters = ["GLENT", "BRICK", "JUMPY", "WAQFS", "VOZHD"]    #covers 25 out of 26 letters in the alphabet
