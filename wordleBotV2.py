@@ -1,4 +1,4 @@
-textfile = open("/Users/aaditya/Desktop/Coding/python/wordle/possibleAnswers.txt", "r")
+textfile = open("possibleAnswers.txt", "r")
 words = textfile.readline().split()
 textfile.close()
 
