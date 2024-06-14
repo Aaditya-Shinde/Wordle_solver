@@ -4,8 +4,11 @@ textfile = open("possibleAnswers.txt", "r")
 answers = textfile.readline().split()
 guessFile = open("guessables.txt", "r")
 guessables = guessFile.readline().split()
+textfile.close()
+guessables.close()
 
 count = {'c': 446, 'i': 646, 'g': 299, 'a': 906, 'r': 835, 'e': 1053, 'b': 266, 'u': 456, 't': 667, 's': 617, 'y': 416, 'h': 377, 'm': 298, 'p': 345, 'w': 193, 'k': 202, 'l': 645, 'f': 206, 'o': 672, 'v': 148, 'd': 370, 'n': 548, 'q': 29, 'j': 27, 'x': 37, 'z': 35}
+#these values are from the original guessables file before we tamper with it.
 
 def remove(guess, feedback):
     global answers
@@ -67,31 +70,23 @@ def optimalGuess(possibilities):
     global count
     global guessables
     
-    if len(possibilities) <= 3:
+    if len(possibilities) <= 2: #If there are three possibilities then there's really no use in doing the computing, it's a 50/50 
         return random.choice(possibilities)
-    best_score = 9999999999
+    best_score = 9999999999    #impossible to reach but needs to be defined before hand
     final_guess = ""
     for guess in guessables:
         score = 0
         for idx in range(5):
             letter = guess[idx]
-            score += abs(count[letter]-(len(possibilities)//2))
+            score += abs(count[letter]-(len(possibilities)//2))    #the least score is the best because it eliminates the closest to half of the answers.
         if score < best_score:
-            duplicates = False
-            for i in range(5):
-                if guess[i] in guess[:i]:
-                    duplicates = True
-                    break
-            if not duplicates:
-                best_score = score
-                final_guess = guess
+            best_score = score
+            final_guess = guess
 
-            
-
-    guessables.remove(final_guess)
+    guessables.remove(final_guess)    #because we will be guessing it and it will have to be removed(unless of course it's the answer in which case it doesn't matter because the programm will exit)
     return final_guess
 
-guess = "slate"
+guess = input("What would you like your first guess to be? ").lower()
 for guess_num in range(6):
     print(guess.upper())
     feedback = input(": ").lower()
@@ -107,4 +102,3 @@ for guess_num in range(6):
         break
     guess = optimalGuess(answers)
     print(answers)
-textfile.close()
