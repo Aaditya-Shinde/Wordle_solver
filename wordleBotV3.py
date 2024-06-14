@@ -70,7 +70,7 @@ def optimalGuess(possibilities):
     global count
     global guessables
     
-    if len(possibilities) <= 2: #If there are three possibilities then there's really no use in doing the computing, it's a 50/50 
+    if len(possibilities) <= 2: #If there are two possibilities then there's really no use in doing the computing, it's a 50/50 
         return random.choice(possibilities)
     best_score = 9999999999    #impossible to reach but needs to be defined before hand
     final_guess = ""
