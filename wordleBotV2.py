@@ -6,13 +6,13 @@ def remove(guess, feedback):
     global words
     import copy
 
-    def hasBlack(word, black):
+    def hasBlack(word, black):    #checking if word has a grey letter
         for letter in black:
             if letter in word:
                 return True
         return False
 
-    def notAllRequired(green, yellow, word):
+    def notAllRequired(green, yellow, word):    #checking if word doesn't have all yellow and green letters
         for i in green:
             if not i in word:
                 return True
@@ -21,14 +21,14 @@ def remove(guess, feedback):
                 return True
         return False
 
-    def yellowWrongPlace(yellow, word):
+    def yellowWrongPlace(yellow, word):    #checking if the yellow letters are in the wrong place
         for idx in range(5):
             letter = word[idx]
             if letter in yellow and idx in yellow[letter]:
                 return True
         return False
 
-    def greenNotInRightPlace(green, word):
+    def greenNotInRightPlace(green, word):    #checking if the green letters are in the wrong place
         for required in green:
             if word[green[required]] != required:
                 return True
