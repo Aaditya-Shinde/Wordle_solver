@@ -54,7 +54,7 @@ def remove(guess, feedback):
             words.remove(word)
 
 def optimalGuess(possibilities):
-    return possibilities[len(possibilities)//2]    #Choosing a guess in the middle of possibilities because it is MORE LIKELY to eliminate more possibilities
+    return possibilities[len(possibilities)//2]    #Choosing a guess in the middle of possibilities at random. Doesn't really make a differnece if you chose any other guess
 
 guess = input("What do you want your first guess to be? ")
 for guess_num in range(6):
