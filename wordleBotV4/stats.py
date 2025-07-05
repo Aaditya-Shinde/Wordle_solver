@@ -3,10 +3,10 @@ import multiprocessing
 import time
 
 def solve_one(hidden_word):
-    textfile = open(".possibleAnswers.txt", "r")
+    textfile = open("../possibleAnswers.txt", "r")
     main.answers = textfile.readline().split()
     textfile.close()
-    textfile = open(".guessables.txt", "r")
+    textfile = open("../guessables.txt", "r")
     main.guessables = textfile.readline().split()
     textfile.close()
 
@@ -29,7 +29,7 @@ if __name__ == "__main__":
 
     start_time = time.time()
     count = 0
-    possible_answers = open(".possibleAnswers.txt", "r").readline().split()
+    possible_answers = open("../possibleAnswers.txt", "r").readline().split()
     with multiprocessing.Pool() as pool:#Parallel Processing to make it faster. For even faster, use pypy3 instead of python3. Total time abt 10 min
         for res in pool.imap_unordered(solve_one, possible_answers):
             count += 1
