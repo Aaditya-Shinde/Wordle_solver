@@ -49,10 +49,10 @@ letters[4].config(text="R")
 submit = tkmacosx.Button(frame, text = "Submit", bg = "#000000", fg = "#ffffff", command = feedback_to_string)
 submit.grid(column=2, row=1)
 
-textfile = open(".possibleAnswers.txt", "r")
+textfile = open("../possibleAnswers.txt", "r")
 main.answers = textfile.readline().split()
 textfile.close()
-textfile = open(".guessables.txt", "r")
+textfile = open("../guessables.txt", "r")
 main.guessables = textfile.readline().split()
 textfile.close()
 
