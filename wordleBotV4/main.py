@@ -65,9 +65,9 @@ def main():
         print(answers)
 
 if __name__ == "__main__":
-    textfile = open(".possibleAnswers.txt", "r")
+    textfile = open("../possibleAnswers.txt", "r")
     answers = textfile.readline().split()
-    guessFile = open(".guessables.txt", "r")
+    guessFile = open("../guessables.txt", "r")
     guessables = guessFile.readline().split()
     textfile.close()
     guessFile.close()
