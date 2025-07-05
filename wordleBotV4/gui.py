@@ -81,5 +81,5 @@ for guess_num in range(6):
     elif guess_num == 5:
         print("😵")
         break
-    guess = main.optimalGuess(main.answers)
+    guess = main.optimal_guess(main.answers)
     # print(main.answers)
