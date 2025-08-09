@@ -1,0 +1,1 @@
+This is a program to solve the NYT puzzle Wordle in which you have to guess a five letter word based on feedback. There are 3 versions here, the 4th one being more sophisticated and the one in releases. Releases as of right now ONLY WORKS FOR MAC
