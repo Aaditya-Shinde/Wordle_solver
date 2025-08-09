@@ -61,7 +61,7 @@ def main():
         elif guess_num == 5:
             print("😵")
             break
-        guess = optimalGuess(answers)
+        guess = optimal_guess(answers)
         print(answers)
 
 if __name__ == "__main__":
